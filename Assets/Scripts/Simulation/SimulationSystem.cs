@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Simulation.Actions;
@@ -25,6 +26,15 @@ namespace Simulation {
           .ToList()
           .ForEach(other => { calculateForces(self, other); });
       });
+    }
+
+    public void PendUpdate(Action setToPending) {
+      StartCoroutine(PendingCouroutine(setToPending));
+    }
+
+    private IEnumerator PendingCouroutine(Action setToPending) {
+      setToPending();
+      yield return new WaitForFixedUpdate();
     }
   }
 }

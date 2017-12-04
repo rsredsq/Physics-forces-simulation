@@ -2,7 +2,22 @@
 
 namespace Simulation {
   public class ChargedObject : MonoBehaviour {
-    public float Charge;
+    [SerializeField]
+    private float charge;
+
+    public float Charge {
+      get { return charge; }
+      set { SimulationSystem.PendUpdate(() => { charge = value; }); }
+    }
+
+    [SerializeField]
+    private float someTestForce;
+
+    public float SomeTestForce {
+      get { return someTestForce; }
+      set { SimulationSystem.PendUpdate(() => { someTestForce = value; }); }
+    }
+
     public Vector3 StartVelocity;
 
     public Rigidbody Rigidbody {
@@ -12,6 +27,10 @@ namespace Simulation {
         }
         return GetComponent<Rigidbody>();
       }
+    }
+
+    public SimulationSystem SimulationSystem {
+      get { return GetComponentInParent<SimulationSystem>(); }
     }
 
     private void Awake() {

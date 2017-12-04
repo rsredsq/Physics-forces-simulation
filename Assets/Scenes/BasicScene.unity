@@ -156,7 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a277a460c0554ce39c502046493fda76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Charge: 1
+  charge: 1
+  someTestForce: 0
   StartVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &64407487
 Rigidbody:
@@ -350,7 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a277a460c0554ce39c502046493fda76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Charge: 1
+  charge: 1
+  someTestForce: 0
   StartVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &874154598
 Rigidbody:
@@ -507,7 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a277a460c0554ce39c502046493fda76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Charge: -1
+  charge: -1
+  someTestForce: 0
   StartVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &1536913768
 Rigidbody:
