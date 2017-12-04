@@ -16,9 +16,6 @@ namespace Simulation {
       GetComponentsInChildren(true, physicsObjects);
     }
 
-    void Update() {
-    }
-
     void FixedUpdate() {
       physicsObjects.ForEach(self => {
         physicsObjects
@@ -33,8 +30,8 @@ namespace Simulation {
     }
 
     private IEnumerator PendingCouroutine(Action setToPending) {
-      setToPending();
       yield return new WaitForFixedUpdate();
+      setToPending();
     }
   }
 }
