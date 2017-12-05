@@ -9,7 +9,7 @@ namespace Simulation {
   public class SimulationSystem : MonoBehaviour {
     private readonly List<ChargedObject> physicsObjects = new List<ChargedObject>();
 
-    private readonly Action<ChargedObject, ChargedObject> calculateForces = FormulasAggregator.ApplyForces;
+    private readonly Action<ChargedObject, List<ChargedObject>> calculateForces = FormulasAggregator.ApplyForces;
 
 
     void Start() {
@@ -18,10 +18,10 @@ namespace Simulation {
 
     void FixedUpdate() {
       physicsObjects.ForEach(self => {
-        physicsObjects
+        var others = physicsObjects
           .Where(me => !ReferenceEquals(me, self))
-          .ToList()
-          .ForEach(other => { calculateForces(self, other); });
+          .ToList();
+        calculateForces(self, others);
       });
     }
 
