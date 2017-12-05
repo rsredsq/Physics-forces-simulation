@@ -11,14 +11,18 @@ namespace Simulation {
     }
 
     [SerializeField]
-    private float someTestForce;
+    private Vector3 velocity;
 
-    public float SomeTestForce {
-      get { return someTestForce; }
-      set { SimulationSystem.PendUpdate(() => { someTestForce = value; }); }
+    public Vector3 Velocity{
+      get { return velocity; }
+      set { SimulationSystem.PendUpdate(() => { velocity = value;  }); }
     }
 
-    public Vector3 StartVelocity;
+
+    public Vector3 CoulombForce;
+    public Vector3 LorentzForce;
+    public Vector3 ElectromagneticForce;
+
 
     public Rigidbody Rigidbody {
       get {
@@ -38,7 +42,13 @@ namespace Simulation {
     }
 
     private void Start() {
-      Rigidbody.velocity = StartVelocity;
+      Rigidbody.velocity = Velocity;
+    }
+
+    private void OnMouseDown()
+    {
+      Rigidbody.AddForce(transform.forward * 100);
+      Debug.Log(Rigidbody.velocity);
     }
   }
 }
