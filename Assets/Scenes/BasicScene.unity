@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465934, g: 0.49642956, b: 0.5748249, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -156,9 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a277a460c0554ce39c502046493fda76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charge: 1
-  someTestForce: 0
-  StartVelocity: {x: 0, y: 0, z: 0}
+  charge: 0.0000015
+  velocity: {x: 0, y: 0, z: 0}
+  CoulombForce: {x: 0, y: 0, z: 0}
+  LorentzForce: {x: 0, y: 0, z: 0}
+  ElectromagneticForce: {x: 0, y: 0, z: 0}
 --- !u!54 &64407487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -302,7 +304,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 839759586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.03, z: -9.89}
+  m_LocalPosition: {x: 0, y: 14.3, z: -43.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -368,9 +370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a277a460c0554ce39c502046493fda76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charge: 1
-  someTestForce: 0
-  StartVelocity: {x: 0, y: 0, z: 0}
+  charge: 0.0000015
+  velocity: {x: 0, y: 0, z: 0}
+  CoulombForce: {x: 0, y: 0, z: 0}
+  LorentzForce: {x: 0, y: 0, z: 0}
+  ElectromagneticForce: {x: 0, y: 0, z: 0}
 --- !u!54 &874154598
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -509,7 +513,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1536913765}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.41}
+  m_LocalPosition: {x: 0, y: 0, z: 29.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 878144301}
@@ -526,9 +530,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a277a460c0554ce39c502046493fda76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charge: -1
-  someTestForce: 0
-  StartVelocity: {x: 0, y: 0, z: 0}
+  charge: -0.00001
+  velocity: {x: 0, y: 0, z: 0}
+  CoulombForce: {x: 0, y: 0, z: 0}
+  LorentzForce: {x: 0, y: 0, z: 0}
+  ElectromagneticForce: {x: 0, y: 0, z: 0}
 --- !u!54 &1536913768
 Rigidbody:
   m_ObjectHideFlags: 0
