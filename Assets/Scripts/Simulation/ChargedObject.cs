@@ -1,19 +1,20 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework.Constraints;
+using UnityEngine;
 
-namespace Simulation{
-  public class ChargedObject : MonoBehaviour{
+namespace Simulation {
+  public class ChargedObject : MonoBehaviour {
     [SerializeField] private float charge;
 
-    public float Charge{
-      get{ return charge; }
-      set{ SimulationSystem.PendUpdate(() => { charge = value; }); }
+    public float Charge {
+      get { return charge; }
+      set { SimulationSystem.PendUpdate(() => { charge = value; }); }
     }
 
     [SerializeField] private Vector3 velocity;
 
-    public Vector3 Velocity{
-      get{ return velocity; }
-      set{ SimulationSystem.PendUpdate(() => { velocity = value; }); }
+    public Vector3 Velocity {
+      get { return velocity; }
+      set { SimulationSystem.PendUpdate(() => { velocity = value; }); }
     }
 
     public Vector3 CoulombForce;
@@ -21,29 +22,41 @@ namespace Simulation{
     public Vector3 ElectromagneticForce;
 
 
-    public Rigidbody Rigidbody{
-      get{
-        if (!GetComponent<Rigidbody>()){
+    public Rigidbody Rigidbody {
+      get {
+        if (!GetComponent<Rigidbody>()) {
           gameObject.AddComponent<Rigidbody>();
         }
         return GetComponent<Rigidbody>();
       }
     }
 
-    public SimulationSystem SimulationSystem{
-      get{ return GetComponentInParent<SimulationSystem>(); }
+    public SimulationSystem SimulationSystem {
+      get { return GetComponentInParent<SimulationSystem>(); }
     }
 
-    private void Awake(){
+    private void Awake() {
       Rigidbody.useGravity = false;
     }
 
-    private void Start(){
+    private void Start() {
       Rigidbody.velocity = Velocity;
     }
 
-    private void OnMouseDown(){
-      Rigidbody.AddForce(transform.forward * 100);
+    private void OnCollisionEnter(Collision other) {
+
+      var otherGameObject = other.gameObject;
+
+      if (otherGameObject.name != "Positive" && otherGameObject.name != "Negative") {
+        return;
+      }
+
+      var otherChargeObject = other.gameObject.GetComponent<ChargedObject>();
+
+      var newCharge = (this.Charge + otherChargeObject.Charge) / 2;
+
+      this.Charge = newCharge;
+      otherChargeObject.Charge = newCharge;
     }
   }
 }
