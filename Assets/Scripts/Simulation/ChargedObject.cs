@@ -17,9 +17,8 @@ namespace Simulation {
       set { SimulationSystem.PendUpdate(() => { velocity = value; }); }
     }
 
-    public Vector3 CoulombForce;
-    public Vector3 LorentzForce;
-    public Vector3 ElectromagneticForce;
+    public Vector3 CoulombForce = Vector3.zero;
+    public Vector3 LorentzForce = Vector3.zero;
 
 
     public Rigidbody Rigidbody {
@@ -44,7 +43,6 @@ namespace Simulation {
     }
 
     private void OnCollisionEnter(Collision other) {
-
       var otherGameObject = other.gameObject;
 
       if (otherGameObject.name != "Positive" && otherGameObject.name != "Negative") {
