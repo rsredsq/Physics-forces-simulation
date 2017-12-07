@@ -18,11 +18,18 @@ namespace Simulation {
 
     void FixedUpdate() {
       physicsObjects.ForEach(self => {
+        ResetForces(self);
+
         var others = physicsObjects
           .Where(me => !ReferenceEquals(me, self))
           .ToList();
         calculateForces(self, others);
       });
+    }
+
+    private void ResetForces(ChargedObject self) {
+      self.CoulombForce = Vector3.zero;
+      self.LorentzForce = Vector3.zero;
     }
 
     public void PendUpdate(Action setToPending) {

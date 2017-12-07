@@ -1,6 +1,7 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 
 namespace Simulation {
+  [RequireComponent(typeof(Rigidbody))]
   public class ChargedObject : MonoBehaviour {
     [SerializeField]
     private float charge;
@@ -13,17 +14,13 @@ namespace Simulation {
     [SerializeField]
     private Vector3 startVelocity;
 
+    [HideInInspector]
     public Vector3 CoulombForce = Vector3.zero;
+    [HideInInspector]
     public Vector3 LorentzForce = Vector3.zero;
 
-
     public Rigidbody Rigidbody {
-      get {
-        if (!GetComponent<Rigidbody>()) {
-          gameObject.AddComponent<Rigidbody>();
-        }
-        return GetComponent<Rigidbody>();
-      }
+      get { return GetComponent<Rigidbody>(); }
     }
 
     public SimulationSystem SimulationSystem {
@@ -41,7 +38,9 @@ namespace Simulation {
     private void OnCollisionEnter(Collision other) {
       var otherChargedObject = other.gameObject.GetComponent<ChargedObject>();
 
-      updateCharge(otherChargedObject);
+      if (otherChargedObject != null) {
+        updateCharge(otherChargedObject);
+      }
     }
 
     private void updateCharge(ChargedObject otherChargeObject) {

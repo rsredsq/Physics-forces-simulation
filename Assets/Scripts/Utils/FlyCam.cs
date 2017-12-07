@@ -12,7 +12,7 @@ namespace Utils {
     private float rotationY;
 
     private void Start() {
-      LockCursor();
+//      LockCursor();
       SetInitialRotationValues();
     }
 

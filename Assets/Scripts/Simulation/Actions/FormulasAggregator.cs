@@ -18,10 +18,10 @@ namespace Simulation.Actions {
       var direction = self.transform.position - other.transform.position;
       direction.Normalize();
 
-      var forceWithDirection = force * direction * Time.fixedDeltaTime;
+      var forceWithDirection = force * direction;
 
-      self.Rigidbody.AddForce(forceWithDirection);
-      self.CoulombForce += forceWithDirection / Time.fixedDeltaTime;
+      self.Rigidbody.AddForce(forceWithDirection * Time.fixedDeltaTime);
+      self.CoulombForce += forceWithDirection;
     }
 
     private static void CalcLorentzForce(ChargedObject self, ChargedObject other) {
@@ -33,10 +33,10 @@ namespace Simulation.Actions {
       var magneticInduction = Vector3.Cross(other.Rigidbody.velocity, direction) *
                               (float) (PhysicsConstants.LORENTZ_FOEF * other.Charge / Math.Pow(distance, 2));
 
-      var force = self.Charge * Vector3.Cross(self.Rigidbody.velocity, magneticInduction) * Time.fixedDeltaTime;
+      var force = self.Charge * Vector3.Cross(self.Rigidbody.velocity, magneticInduction);
 
-      self.Rigidbody.AddForce(force);
-      self.LorentzForce += force / Time.fixedDeltaTime;
+      self.Rigidbody.AddForce(force * Time.fixedDeltaTime);
+      self.LorentzForce += force;
     }
   }
 }
