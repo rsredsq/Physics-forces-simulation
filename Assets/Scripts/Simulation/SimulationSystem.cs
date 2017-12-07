@@ -18,15 +18,10 @@ namespace Simulation {
 
     void FixedUpdate() {
       physicsObjects.ForEach(self => {
-        self.CoulombForce = Vector3.zero;
-        self.LorentzForce = Vector3.zero;
-
         var others = physicsObjects
           .Where(me => !ReferenceEquals(me, self))
           .ToList();
         calculateForces(self, others);
-
-        self.Velocity = self.Rigidbody.velocity;
       });
     }
 

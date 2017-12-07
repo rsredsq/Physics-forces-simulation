@@ -30,7 +30,7 @@ namespace Simulation.Actions {
       var direction = self.transform.position - other.transform.position;
       direction.Normalize();
 
-      var magneticInduction = Vector3.Cross(other.Velocity, direction) *
+      var magneticInduction = Vector3.Cross(other.Rigidbody.velocity, direction) *
                               (float) (PhysicsConstants.LORENTZ_FOEF * other.Charge / Math.Pow(distance, 2));
 
       var force = self.Charge * Vector3.Cross(self.Rigidbody.velocity, magneticInduction) * Time.fixedDeltaTime;

@@ -1,21 +1,17 @@
-﻿using NUnit.Framework.Constraints;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Simulation {
   public class ChargedObject : MonoBehaviour {
-    [SerializeField] private float charge;
+    [SerializeField]
+    private float charge;
 
     public float Charge {
       get { return charge; }
       set { SimulationSystem.PendUpdate(() => { charge = value; }); }
     }
 
-    [SerializeField] private Vector3 velocity;
-
-    public Vector3 Velocity {
-      get { return velocity; }
-      set { SimulationSystem.PendUpdate(() => { velocity = value; }); }
-    }
+    [SerializeField]
+    private Vector3 startVelocity;
 
     public Vector3 CoulombForce = Vector3.zero;
     public Vector3 LorentzForce = Vector3.zero;
@@ -39,21 +35,18 @@ namespace Simulation {
     }
 
     private void Start() {
-      Rigidbody.velocity = Velocity;
+      Rigidbody.velocity = startVelocity;
     }
 
     private void OnCollisionEnter(Collision other) {
-      var otherGameObject = other.gameObject;
+      var otherChargedObject = other.gameObject.GetComponent<ChargedObject>();
 
-      if (otherGameObject.name != "Positive" && otherGameObject.name != "Negative") {
-        return;
-      }
+      updateCharge(otherChargedObject);
+    }
 
-      var otherChargeObject = other.gameObject.GetComponent<ChargedObject>();
-
-      var newCharge = (this.Charge + otherChargeObject.Charge) / 2;
-
-      this.Charge = newCharge;
+    private void updateCharge(ChargedObject otherChargeObject) {
+      var newCharge = (Charge + otherChargeObject.Charge) / 2;
+      Charge = newCharge;
       otherChargeObject.Charge = newCharge;
     }
   }
