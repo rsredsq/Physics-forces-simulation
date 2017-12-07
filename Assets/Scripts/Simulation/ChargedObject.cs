@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 
 namespace Simulation {
   public class ChargedObject : MonoBehaviour {
