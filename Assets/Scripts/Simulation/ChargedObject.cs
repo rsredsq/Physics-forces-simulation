@@ -3,14 +3,16 @@ using UnityEngine;
 
 namespace Simulation {
   public class ChargedObject : MonoBehaviour {
-    [SerializeField] private float charge;
+    [SerializeField]
+    private float charge;
 
     public float Charge {
       get { return charge; }
       set { SimulationSystem.PendUpdate(() => { charge = value; }); }
     }
 
-    [SerializeField] private Vector3 velocity;
+    [SerializeField]
+    private Vector3 velocity;
 
     public Vector3 Velocity {
       get { return velocity; }
