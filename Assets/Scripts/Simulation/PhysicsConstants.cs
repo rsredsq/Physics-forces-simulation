@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Simulation {
-  public class PhysicsConstants {
+  public static class PhysicsConstants {
     private const double SCALE = 1e3;
 
     public const double COULOMB_KOEF = 8.987552e9 * SCALE * SCALE;

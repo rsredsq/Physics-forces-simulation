@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
+using Utils;
 
 namespace Simulation {
-  [ExecuteInEditMode]
   public class ChargeColorChanger : MonoBehaviour {
     private Renderer render;
     private ChargedObject chargedObject;
@@ -21,11 +21,11 @@ namespace Simulation {
 
     private void UpdateColor() {
       if (Charge < 0) {
-        render.sharedMaterial.color = Color.red;
+        render.material.color = ChargeColors.red;
       } else if (Charge > 0) {
-        render.sharedMaterial.color = Color.green;
+        render.material.color = ChargeColors.green;
       } else {
-        render.sharedMaterial.color = Color.grey;
+        render.material.color = ChargeColors.grey;
       }
     }
   }
