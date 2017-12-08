@@ -2,10 +2,10 @@
 
 namespace Simulation {
   public static class PhysicsConstants {
-    private const double SCALE = 1e4;
+    private const float SCALE = 1e7f;
 
-    public const double COULOMB_KOEF = 8.987552e9 * SCALE * SCALE;
-    public const double LORENTZ_FOEF = 1e-7 * SCALE * SCALE;
+    public const float COULOMB_KOEF = 8.988e9f * SCALE * SCALE;
+    public const float LORENTZ_FOEF = 1e-7f * SCALE * SCALE;
 
     public const float ACCURACY = 1e-6f;
   }

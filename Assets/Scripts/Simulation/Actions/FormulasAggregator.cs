@@ -13,12 +13,16 @@ namespace Simulation.Actions {
 
     private static void CalcCoulombForce(ChargedObject self, ChargedObject other) {
       var distance = Vector3.Distance(self.transform.position, other.transform.position);
-      var force = (float) (PhysicsConstants.COULOMB_KOEF * self.Charge * other.Charge / Mathf.Pow(distance, 2));
+      var force = PhysicsConstants.COULOMB_KOEF * self.Charge * other.Charge / Mathf.Pow(distance, 2f);
 
       var direction = self.transform.position - other.transform.position;
       direction.Normalize();
 
       var forceWithDirection = force * direction;
+
+      forceWithDirection.x = (float) Math.Round(forceWithDirection.x, 0);
+      forceWithDirection.y = (float) Math.Round(forceWithDirection.y, 0);
+      forceWithDirection.z = (float) Math.Round(forceWithDirection.z, 0);
 
       if (Math.Abs(Vector3.SqrMagnitude(forceWithDirection)) <= PhysicsConstants.ACCURACY) return;
 
@@ -33,7 +37,7 @@ namespace Simulation.Actions {
       direction.Normalize();
 
       var magneticInduction = Vector3.Cross(other.Rigidbody.velocity, direction) *
-                              (float) (PhysicsConstants.LORENTZ_FOEF * other.Charge / Math.Pow(distance, 2));
+                              (PhysicsConstants.LORENTZ_FOEF * other.Charge / Mathf.Pow(distance, 2f));
 
       var force = self.Charge * Vector3.Cross(self.Rigidbody.velocity, magneticInduction);
 

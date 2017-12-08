@@ -212,7 +212,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -240,6 +240,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54644346576105106, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: charge
+      value: 0.0000000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -465,7 +485,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -502,7 +522,22 @@ Prefab:
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: charge
-      value: -0.000001425
+      value: -0.00000000143566
+      objectReference: {fileID: 0}
+    - target: {fileID: 54644346576105106, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
@@ -516,7 +551,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -549,6 +584,26 @@ Prefab:
     - target: {fileID: 1211612819027144, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_Name
       value: ChargedObject (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 54644346576105106, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: charge
+      value: 0.0000000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
@@ -627,13 +682,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 839759586}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.59, y: 11.74, z: -17}
+  m_LocalRotation: {x: 0.2413775, y: -0.29765612, z: 0.03003294, w: 0.92316616}
+  m_LocalPosition: {x: 12.84, y: 19.294, z: -15.238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.616001, y: -37.148003, z: -5.716}
 --- !u!114 &839759591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,7 +850,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -828,6 +883,26 @@ Prefab:
     - target: {fileID: 1211612819027144, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_Name
       value: ChargedObject (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 54644346576105106, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: charge
+      value: 0.0000000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
@@ -927,7 +1002,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4728460927021264, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -960,6 +1035,26 @@ Prefab:
     - target: {fileID: 1211612819027144, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
       propertyPath: m_Name
       value: ChargedObject (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 54644346576105106, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: charge
+      value: 0.0000000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
+        type: 2}
+      propertyPath: startVelocity.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4, type: 2}
