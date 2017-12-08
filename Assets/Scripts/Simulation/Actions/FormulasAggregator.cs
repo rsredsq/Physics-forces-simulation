@@ -20,6 +20,8 @@ namespace Simulation.Actions {
 
       var forceWithDirection = force * direction;
 
+      if (Math.Abs(Vector3.SqrMagnitude(forceWithDirection)) <= PhysicsConstants.ACCURACY) return;
+
       self.Rigidbody.AddForce(forceWithDirection * Time.fixedDeltaTime);
       self.CoulombForce += forceWithDirection;
     }
@@ -34,6 +36,8 @@ namespace Simulation.Actions {
                               (float) (PhysicsConstants.LORENTZ_FOEF * other.Charge / Math.Pow(distance, 2));
 
       var force = self.Charge * Vector3.Cross(self.Rigidbody.velocity, magneticInduction);
+
+      if (Math.Abs(Vector3.SqrMagnitude(force)) <= PhysicsConstants.ACCURACY) return;
 
       self.Rigidbody.AddForce(force * Time.fixedDeltaTime);
       self.LorentzForce += force;
