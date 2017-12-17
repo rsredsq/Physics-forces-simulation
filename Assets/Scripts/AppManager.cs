@@ -15,8 +15,4 @@ public class AppManager : MonoBehaviour {
       editorModeEnabled = value;
     }
   }
-
-  private void OnGUI() {
-    GUILayout.Label("Test");
-  }
 }
