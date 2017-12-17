@@ -293,8 +293,9 @@ GameObject:
   m_Component:
   - component: {fileID: 322035650}
   - component: {fileID: 322035649}
+  - component: {fileID: 322035651}
   m_Layer: 0
-  m_Name: AppManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,6 +325,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322035651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 322035648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2fae1a1f9b4dd7b62b5c948894d7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &638125864
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,9 +737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997c4c7a88ad4989ba9ccbabc4a917de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToInstantiate: {fileID: 1211612819027144, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
-    type: 2}
-  SimulationSystem: {fileID: 1664748097}
 --- !u!1 &1479413926
 GameObject:
   m_ObjectHideFlags: 0
