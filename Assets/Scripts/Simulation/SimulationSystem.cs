@@ -11,12 +11,23 @@ namespace Simulation {
 
     private readonly Action<ChargedObject, List<ChargedObject>> calculateForces = FormulasAggregator.ApplyForces;
 
-
     void Start() {
       GetComponentsInChildren(true, physicsObjects);
     }
 
     void FixedUpdate() {
+      if (AppManager.Instance.EditorModeEnabled) {
+        physicsObjects.ForEach(cObj => {
+          var rig = cObj.GetComponent<Rigidbody>();
+          rig.Sleep();
+        });
+        return;
+      }
+
+      PhysicsTick();
+    }
+
+    private void PhysicsTick() {
       physicsObjects.ForEach(self => {
         ResetForces(self);
 
@@ -39,6 +50,10 @@ namespace Simulation {
     private IEnumerator PendingCouroutine(Action setToPending) {
       yield return new WaitForFixedUpdate();
       setToPending();
+    }
+
+    public void AddNewChargedObject(ChargedObject obj) {
+      physicsObjects.Add(obj);
     }
   }
 }
