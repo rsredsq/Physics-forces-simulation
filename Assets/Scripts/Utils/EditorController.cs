@@ -3,14 +3,12 @@ using UnityEngine;
 
 namespace Utils {
   public class EditorController : MonoBehaviour {
-    private GameObject ChargedObjectToInstantiate;
-    private FlyCam FlyCam;
-    private SimulationSystem SimulationSystem;
+    private GameObject chargedObjectToInstantiate;
+    private SimulationSystem simulationSystem;
 
     private void Awake() {
-      ChargedObjectToInstantiate = Resources.Load<GameObject>("Prefabs/ChargedObject");
-      SimulationSystem = FindObjectOfType<SimulationSystem>();
-      FlyCam = GetComponent<FlyCam>();
+      chargedObjectToInstantiate = Resources.Load<GameObject>("Prefabs/ChargedObject");
+      simulationSystem = FindObjectOfType<SimulationSystem>();
     }
 
     private void Update() {
@@ -24,11 +22,11 @@ namespace Utils {
     }
 
     private void InstantiateNewObject() {
-      var obj = Instantiate(ChargedObjectToInstantiate, SimulationSystem.transform);
+      var obj = Instantiate(chargedObjectToInstantiate, simulationSystem.transform);
       var chargedObj = obj.GetComponent<ChargedObject>();
-      var cameraPosition = FlyCam.transform.position;
+      var cameraPosition = transform.position;
       obj.transform.position = cameraPosition;
-      SimulationSystem.AddNewChargedObject(chargedObj);
+      simulationSystem.AddNewChargedObject(chargedObj);
     }
   }
 }

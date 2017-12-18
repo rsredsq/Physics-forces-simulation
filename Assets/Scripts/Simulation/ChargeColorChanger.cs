@@ -2,6 +2,8 @@
 using Utils;
 
 namespace Simulation {
+  [RequireComponent(typeof(Renderer))]
+  [RequireComponent(typeof(ChargedObject))]
   public class ChargeColorChanger : MonoBehaviour {
     private Renderer render;
     private ChargedObject chargedObject;
@@ -15,17 +17,13 @@ namespace Simulation {
       chargedObject = GetComponent<ChargedObject>();
     }
 
-    private void LateUpdate() {
-      UpdateColor();
-    }
-
-    private void UpdateColor() {
+    public void OnChargeChange() {
       if (Charge < 0) {
-        render.material.color = ChargeColors.red;
+        render.material.color = CustomColors.red;
       } else if (Charge > 0) {
-        render.material.color = ChargeColors.green;
+        render.material.color = CustomColors.green;
       } else {
-        render.material.color = ChargeColors.grey;
+        render.material.color = CustomColors.grey;
       }
     }
   }

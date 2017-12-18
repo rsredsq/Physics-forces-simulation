@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Simulation {
   [RequireComponent(typeof(Rigidbody))]
   public class ChargedObject : MonoBehaviour {
     [SerializeField]
     private float charge;
+
+    public UnityEvent OnChargeChange;
 
     public float Charge {
       get { return charge; }
@@ -16,6 +19,7 @@ namespace Simulation {
 
     [HideInInspector]
     public Vector3 CoulombForce = Vector3.zero;
+
     [HideInInspector]
     public Vector3 LorentzForce = Vector3.zero;
 
@@ -29,6 +33,7 @@ namespace Simulation {
 
     private void Awake() {
       Rigidbody.useGravity = false;
+      OnChargeChange.Invoke();
     }
 
     private void Start() {
@@ -39,14 +44,16 @@ namespace Simulation {
       var otherChargedObject = other.gameObject.GetComponent<ChargedObject>();
 
       if (otherChargedObject != null) {
-        updateCharge(otherChargedObject);
+        UpdateCharge(otherChargedObject);
       }
     }
 
-    private void updateCharge(ChargedObject otherChargeObject) {
+    private void UpdateCharge(ChargedObject otherChargeObject) {
       var newCharge = (Charge + otherChargeObject.Charge) / 2;
       Charge = newCharge;
       otherChargeObject.Charge = newCharge;
+      OnChargeChange.Invoke();
+      otherChargeObject.OnChargeChange.Invoke();
     }
   }
 }
