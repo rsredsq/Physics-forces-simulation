@@ -33,10 +33,10 @@ namespace Simulation {
 
     private void Awake() {
       Rigidbody.useGravity = false;
-      OnChargeChange.Invoke();
     }
 
     private void Start() {
+      OnChargeChange.Invoke();
       Rigidbody.velocity = startVelocity;
     }
 

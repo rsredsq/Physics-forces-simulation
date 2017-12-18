@@ -24,8 +24,8 @@ namespace Utils {
     private void InstantiateNewObject() {
       var obj = Instantiate(chargedObjectToInstantiate, simulationSystem.transform);
       var chargedObj = obj.GetComponent<ChargedObject>();
-      var cameraPosition = transform.position;
-      obj.transform.position = cameraPosition;
+      var objPosition = transform.position + transform.TransformDirection(Vector3.forward);
+      obj.transform.position = objPosition;
       simulationSystem.AddNewChargedObject(chargedObj);
     }
   }
