@@ -11,7 +11,12 @@ namespace Simulation {
 
     public float Charge {
       get { return charge; }
-      set { SimulationSystem.PendUpdate(() => { charge = value; }); }
+      set {
+        SimulationSystem.PendUpdate(() => {
+          charge = value;
+          OnChargeChange.Invoke();
+        });
+      }
     }
 
     [SerializeField]
@@ -36,7 +41,6 @@ namespace Simulation {
     }
 
     private void Start() {
-      OnChargeChange.Invoke();
       Rigidbody.velocity = startVelocity;
     }
 
@@ -52,8 +56,6 @@ namespace Simulation {
       var newCharge = (Charge + otherChargeObject.Charge) / 2;
       Charge = newCharge;
       otherChargeObject.Charge = newCharge;
-      OnChargeChange.Invoke();
-      otherChargeObject.OnChargeChange.Invoke();
     }
   }
 }
