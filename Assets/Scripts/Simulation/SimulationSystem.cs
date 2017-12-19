@@ -9,6 +9,8 @@ namespace Simulation {
   public class SimulationSystem : MonoBehaviour {
     private readonly List<ChargedObject> physicsObjects = new List<ChargedObject>();
 
+    private readonly Stack<Dictionary<int, Vector3>> velocitiesStack = new Stack<Dictionary<int, Vector3>>(2);
+
     private readonly Action<ChargedObject, List<ChargedObject>> calculateForces = FormulasAggregator.ApplyForces;
 
     void Start() {
@@ -16,15 +18,57 @@ namespace Simulation {
     }
 
     void FixedUpdate() {
-      if (AppManager.Instance.EditorModeEnabled) {
-        physicsObjects.ForEach(cObj => {
-          var rig = cObj.GetComponent<Rigidbody>();
-          rig.Sleep();
-        });
+      if (AppManager.Instance.EditorModeEnabled && !simulationPaused) {
+        PauseObjectsSimulation();
         return;
       }
 
+      if (simulationPaused) {
+        ResumeSimulation();
+      }
+
       PhysicsTick();
+    }
+
+    private void ResumeSimulation() {
+      if (!simulationPaused) return;
+      physicsObjects.ForEach(cObj => {
+        var rig = cObj.GetComponent<Rigidbody>();
+        rig.WakeUp();
+      });
+
+      PopVelocity();
+      simulationPaused = false;
+    }
+
+    private bool simulationPaused;
+
+    private void PauseObjectsSimulation() {
+      if (simulationPaused) return;
+      PushVelocity();
+      physicsObjects.ForEach(cObj => {
+        var rig = cObj.GetComponent<Rigidbody>();
+        rig.Sleep();
+      });
+      simulationPaused = true;
+    }
+
+    private void PushVelocity() {
+      var velocities = physicsObjects
+        .Select(cObj => cObj.GetComponent<Rigidbody>())
+        .ToDictionary(rig => rig.GetInstanceID(), rig => rig.velocity);
+
+      velocitiesStack.Push(velocities);
+    }
+
+    private void PopVelocity() {
+      var velocities = velocitiesStack.Pop();
+
+      physicsObjects
+        .Select(cObj => cObj.GetComponent<Rigidbody>())
+        .Where(rig => velocities.ContainsKey(rig.GetInstanceID()))
+        .ToList()
+        .ForEach(rig => rig.velocity = velocities[rig.GetInstanceID()]);
     }
 
     private void PhysicsTick() {
