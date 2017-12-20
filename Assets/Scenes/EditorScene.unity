@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45141685, g: 0.50090957, b: 0.5723245, a: 1}
+  m_IndirectSpecularColor: {r: 0.45140016, g: 0.5008923, b: 0.57231706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 180418297}
   - component: {fileID: 180418296}
   - component: {fileID: 180418295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: south
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 233077911}
   - component: {fileID: 233077910}
   - component: {fileID: 233077909}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 638125868}
   - component: {fileID: 638125867}
   - component: {fileID: 638125866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: west
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 945662044}
   - component: {fileID: 945662043}
   - component: {fileID: 945662042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: east
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 1088576468}
   - component: {fileID: 1088576467}
   - component: {fileID: 1088576466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ceil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 1479413930}
   - component: {fileID: 1479413929}
   - component: {fileID: 1479413928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: north
   m_TagString: Untagged
   m_Icon: {fileID: 0}
