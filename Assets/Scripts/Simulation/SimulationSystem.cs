@@ -18,7 +18,7 @@ namespace Simulation {
     }
 
     void FixedUpdate() {
-      if (AppManager.Instance.EditorModeEnabled && !simulationPaused) {
+      if (AppManager.Instance.EditorModeEnabled) {
         PauseObjectsSimulation();
         return;
       }
