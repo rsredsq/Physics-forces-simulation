@@ -41,6 +41,7 @@ namespace Simulation {
     }
 
     private void Start() {
+      OnChargeChange.Invoke();
       Rigidbody.velocity = startVelocity;
     }
 
