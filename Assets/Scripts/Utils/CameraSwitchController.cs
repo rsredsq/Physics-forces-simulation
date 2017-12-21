@@ -23,18 +23,23 @@ namespace Utils {
         var hitObject = raycastHit.transform.gameObject;
         var chargedObject = hitObject.GetComponent<ChargedObject>();
         if (chargedObject == null || !Input.GetKeyDown(KeyCode.Space)) return;
-        FlipCameras();
+        EnableSecondaryCamera();
         followingCamera.Target = chargedObject.transform;
       } else if (followingCamera.enabled) {
         if (Input.GetKeyDown(KeyCode.Space)) {
-          FlipCameras();
+          EnableMainCamera();
         }
       }
     }
 
-    private void FlipCameras() {
-      mainCamera.enabled = !mainCamera.enabled;
-      followingCamera.enabled = !followingCamera.enabled;
+    private void EnableMainCamera() {
+      mainCamera.enabled = true;
+      followingCamera.enabled = false;
+    }
+
+    private void EnableSecondaryCamera() {
+      mainCamera.enabled = false;
+      followingCamera.enabled = true;
     }
   }
 }
