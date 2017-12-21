@@ -17,6 +17,7 @@ namespace Utils {
     }
 
     private void Update() {
+      if (!GetComponent<Camera>().enabled) return;
       if (!IsCusorLocked()) {
         TryLockCursor();
         return;
