@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45141685, g: 0.50090957, b: 0.5723245, a: 1}
+  m_IndirectSpecularColor: {r: 0.45140016, g: 0.5008923, b: 0.57231706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -250,12 +250,12 @@ Prefab:
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: charge
-      value: 0.0000000015
+      value: 0.0000015
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: startVelocity.x
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
@@ -574,7 +574,7 @@ Prefab:
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: charge
-      value: -0.00000000143566
+      value: -0.00000143566
       objectReference: {fileID: 0}
     - target: {fileID: 54644346576105106, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
@@ -584,7 +584,7 @@ Prefab:
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: startVelocity.x
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
@@ -645,12 +645,12 @@ Prefab:
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: charge
-      value: 0.0000000015
+      value: 0.0000015
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: startVelocity.x
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
@@ -944,12 +944,12 @@ Prefab:
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: charge
-      value: 0.0000000015
+      value: 0.0000015
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: startVelocity.x
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
@@ -1096,12 +1096,12 @@ Prefab:
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: charge
-      value: 0.0000000015
+      value: 0.0000015
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
       propertyPath: startVelocity.x
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114579841644561640, guid: 9e8f1b4ab81f24a2e8eafd43d6edccd4,
         type: 2}
