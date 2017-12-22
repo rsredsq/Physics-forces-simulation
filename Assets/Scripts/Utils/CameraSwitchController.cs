@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Utils {
   public class CameraSwitchController : MonoBehaviour {
     private Camera mainCamera;
-    private FollowCam followingCamera;
+    private Camera followingCamera;
 
     private void Awake() {
       PickCameras();
@@ -12,7 +12,7 @@ namespace Utils {
 
     private void PickCameras() {
       mainCamera = Camera.main;
-      followingCamera = FindObjectOfType<FollowCam>();
+      followingCamera = GameObject.FindGameObjectWithTag("FollowingCamera").GetComponent<Camera>();
     }
 
     private void Update() {
@@ -24,7 +24,7 @@ namespace Utils {
         var chargedObject = hitObject.GetComponent<ChargedObject>();
         if (chargedObject == null || !Input.GetKeyDown(KeyCode.Space)) return;
         EnableSecondaryCamera();
-        followingCamera.Target = chargedObject.transform;
+        followingCamera.GetComponent<FollowCam>().Target = chargedObject.transform;
       } else if (followingCamera.enabled) {
         if (Input.GetKeyDown(KeyCode.Space)) {
           EnableMainCamera();
