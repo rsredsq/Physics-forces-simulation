@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class LoadScenesOnClick : MonoBehaviour {
 
   public void LoadByIndex(int sceneIndex) {
-    SceneManager.LoadScene(sceneIndex);
+    SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
   }
 
 }
