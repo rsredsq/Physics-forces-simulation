@@ -2,7 +2,6 @@
 using Simulation;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Utils {
   public class EditorController : MonoBehaviour {
@@ -12,11 +11,8 @@ namespace Utils {
     public Canvas CanvasObject;
 
     public TMP_InputField Weight;
-
-    public TMP_InputField SpeedX;
-    public TMP_InputField SpeedY;
-    public TMP_InputField SpeedZ;
-
+    public TMP_InputField Speed;
+    public TMP_InputField Position;
     public TMP_InputField Charge;
 
 
@@ -54,13 +50,11 @@ namespace Utils {
 
     private void UnlockedCanvas() {
       CanvasObject.gameObject.SetActive(true);
-      ;
     }
 
     private static void UnlockedCursor() {
       Cursor.lockState = CursorLockMode.None;
     }
-
 
     private void LockedFlyCam() {
       var flyCamScrypt = CameraObject.GetComponent<FlyCam>();
@@ -78,54 +72,35 @@ namespace Utils {
       AppManager.Instance.EditorModeEnabled = false;
     }
 
-    private float GetStringFromInputField(TMP_InputField field) {
-      return string.IsNullOrEmpty(field.text)
-        ? float.Parse(field.placeholder.GetComponent<TMP_Text>().text)
-        : float.Parse(field.text);
-    }
-
-    private float GetValidCharge(float charge) {
-      return charge * 1e-6f;
-    }
-
-    private float GetValidWeight(float weight) {
-      return weight <= 0 ? 1 : weight;
-    }
-
     private void ClearTextInInputFields() {
       Weight.text = String.Empty;
-      SpeedX.text = String.Empty;
-      SpeedY.text = String.Empty;
-      SpeedZ.text = String.Empty;
+      Speed.text = String.Empty;
+      Position.text = String.Empty;
       Charge.text = String.Empty;
     }
 
     public void ClickButtonOk() {
-      var weight = GetStringFromInputField(Weight);
-      weight = GetValidWeight(weight);
+      var weight = Helpers.GetValidWeight(Helpers.ParseFloat(Weight));
 
-      var speedX = GetStringFromInputField(SpeedX);
-      var speedY = GetStringFromInputField(SpeedY);
-      var speedZ = GetStringFromInputField(SpeedZ);
+      var speed = Helpers.ParseVector3(Speed);
+      var position = Helpers.ParseVector3(Position);
 
-      var charge = GetStringFromInputField(Charge);
-      charge = GetValidCharge(charge);
+      var charge = Helpers.GetValidCharge(Helpers.ParseFloat(Charge));
 
       FinishAddChargeObject();
-      InstantiateNewObject(weight, speedX, speedY, speedZ, charge);
+      InstantiateNewObject(weight, speed, position, charge);
 
       ClearTextInInputFields();
     }
 
-    private void InstantiateNewObject(float weight, float speedX, float speedY, float speedZ, float charge) {
+    private void InstantiateNewObject(float weight, Vector3 speed, Vector3 pos, float charge) {
       var obj = Instantiate(chargedObjectToInstantiate, simulationSystem.transform);
       var chargedObj = obj.GetComponent<ChargedObject>();
-      var objPosition = transform.position + transform.TransformDirection(Vector3.forward);
-      obj.transform.position = objPosition;
+      obj.transform.position = pos;
 
       chargedObj.Charge = charge;
       chargedObj.Rigidbody.mass = weight;
-      chargedObj.startVelocity = new Vector3(speedX, speedY, speedZ);
+      chargedObj.startVelocity = speed;
 
       simulationSystem.AddNewChargedObject(chargedObj);
     }

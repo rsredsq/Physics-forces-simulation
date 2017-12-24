@@ -1,5 +1,4 @@
-﻿using System;
-using Simulation;
+﻿using Simulation;
 using UnityEngine;
 using Utils;
 
@@ -25,9 +24,11 @@ namespace UI {
     }
 
     private void ShowPhysicsConsts() {
-      var target = followingCamera.GetComponent<FollowCam>().Target.gameObject.GetComponent<ChargedObject>();
+      var target = followingCamera.GetComponent<FollowCam>().Target;
       if (target == null) return;
-      GUILayout.Label(string.Format("Charge: {0}", target.Charge));
+      var chargedObject = target.GetComponent<ChargedObject>();
+      if (chargedObject == null) return;
+      GUILayout.Label(string.Format("Charge: {0}", chargedObject.Charge));
     }
   }
 }

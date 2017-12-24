@@ -1,9 +1,19 @@
-﻿using UnityEngine;
+﻿using Simulation;
+using UnityEngine;
 
 namespace Utils {
-  [RequireComponent(typeof(Simulation.ChargedObject))]
+  [RequireComponent(typeof(ChargedObject))]
   public class FollowCam : MonoBehaviour {
-    public Transform Target;
+    private Transform target;
+
+    public Transform Target {
+      get { return target; }
+      set {
+        target = value;
+        localPosition = target.InverseTransformPoint(Position);
+        maxDistance = Vector3.Distance(Position, target.position);
+      }
+    }
 
     public float SpeedX = 360f;
     public float SpeedY = 240f;
@@ -21,13 +31,8 @@ namespace Utils {
       set { transform.position = value; }
     }
 
-    private void Start() {
-      localPosition = Target.InverseTransformPoint(Position);
-      maxDistance = Vector3.Distance(Position, Target.position);
-    }
-
     private void LateUpdate() {
-      if (!IsCusorLocked())
+      if (!IsCusorLocked() || Target == null)
         return;
 
       Position = Target.TransformPoint(localPosition);
@@ -77,8 +82,7 @@ namespace Utils {
 
       if (Physics.Raycast(Target.position, transform.position - Target.position, out hit, maxDistance, Obstances)) {
         Position = hit.point;
-      }
-      else if (distance < maxDistance && !Physics.Raycast(Position, -transform.forward, .1f, Obstances)) {
+      } else if (distance < maxDistance && !Physics.Raycast(Position, -transform.forward, .1f, Obstances)) {
         Position -= transform.forward * .05f;
       }
     }
