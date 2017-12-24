@@ -20,7 +20,7 @@ namespace Simulation {
     }
 
     [SerializeField]
-    private Vector3 startVelocity;
+    public Vector3 startVelocity;
 
     [HideInInspector]
     public Vector3 CoulombForce = Vector3.zero;
