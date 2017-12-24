@@ -1,5 +1,6 @@
 ﻿using System;
 using Simulation;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,13 +11,13 @@ namespace Utils {
     public Camera CameraObject;
     public Canvas CanvasObject;
 
-    public InputField Weight;
+    public TMP_InputField Weight;
 
-    public InputField SpeedX;
-    public InputField SpeedY;
-    public InputField SpeedZ;
+    public TMP_InputField SpeedX;
+    public TMP_InputField SpeedY;
+    public TMP_InputField SpeedZ;
 
-    public InputField Charge;
+    public TMP_InputField Charge;
 
 
     private void Awake() {
@@ -77,9 +78,9 @@ namespace Utils {
       AppManager.Instance.EditorModeEnabled = false;
     }
 
-    private float GetStringFromInputField(InputField field) {
+    private float GetStringFromInputField(TMP_InputField field) {
       return string.IsNullOrEmpty(field.text)
-        ? float.Parse(field.placeholder.GetComponent<Text>().text)
+        ? float.Parse(field.placeholder.GetComponent<TMP_Text>().text)
         : float.Parse(field.text);
     }
 
