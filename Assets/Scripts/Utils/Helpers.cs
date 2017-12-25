@@ -30,7 +30,7 @@ namespace Utils {
 
     public static Vector3 ParseVector3(TMP_InputField field) {
       var value = StringFromInputField(field);
-      var vectorVars = value.Split(' ').Select(float.Parse).ToList();
+      var vectorVars = value.Trim().Split(' ').Select(float.Parse).ToList();
       if (vectorVars.Count != 3) throw new Exception("antoha, eto pizda");
       return new Vector3(vectorVars[0], vectorVars[1], vectorVars[2]);
     }

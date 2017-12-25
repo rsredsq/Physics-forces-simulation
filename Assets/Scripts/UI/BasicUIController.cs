@@ -16,7 +16,7 @@ namespace UI {
 
     private void OnGUI() {
       if (AppManager.Instance.EditorModeEnabled) {
-        GUILayout.Label("[Editor Mode]");
+        GUI.Label(new Rect(0, 0, 200, 50), "[Editor Mode]");
       }
       if (followingCamera.enabled) {
         ShowPhysicsConsts();
@@ -28,7 +28,13 @@ namespace UI {
       if (target == null) return;
       var chargedObject = target.GetComponent<ChargedObject>();
       if (chargedObject == null) return;
-      GUILayout.Label(string.Format("Charge: {0}", chargedObject.Charge));
+      GUI.BeginGroup(new Rect(0, 20, 200, 100));
+      GUI.Box(new Rect(0, 0, 200, 100), "");
+      GUILayout.Label(string.Format("Заряд: {0}", chargedObject.Charge));
+      GUILayout.Label(string.Format("Скорость: {0}", chargedObject.Rigidbody.velocity));
+      GUILayout.Label(string.Format("Сила Лоренца: {0}", chargedObject.LorentzForce));
+      GUILayout.Label(string.Format("Сила Кулона: {0}", chargedObject.CoulombForce));
+      GUI.EndGroup();
     }
   }
 }
