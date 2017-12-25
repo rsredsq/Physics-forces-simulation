@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using SFB;
 using Simulation;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 namespace Utils {
   public static class Helpers {
@@ -35,7 +36,7 @@ namespace Utils {
     }
 
     public static void SaveScene() {
-      var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", "", "");
+      var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", "", "dat");
 
       var objectsToSave = GameObject.FindObjectsOfType<ChargedObject>()
         .Select(it => it.Data).ToArray();
@@ -47,8 +48,8 @@ namespace Utils {
       file.Close();
     }
 
-    public static ChargedObjectData[] LoadScene() {
-      var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", "", false);
+    public static ChargedObjectData[] LoadData() {
+      var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", "dat", false);
 
       var path = paths[0];
       if (path.StartsWith("file://")) {
@@ -60,19 +61,33 @@ namespace Utils {
 
       return chargedObjectsData;
     }
+
+    public static void LoadScene() {
+      var datas = LoadData();
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+      SceneManager.sceneLoaded += (scene, mode) => {
+        var simulationSystem = GameObject.FindGameObjectWithTag("SimulationSystem");
+        var objToCreate = Resources.Load<GameObject>("Prefabs/ChargedObject");
+
+        foreach (var data in datas) {
+          var gameObject = Object.Instantiate(objToCreate, data.Position, Quaternion.identity, simulationSystem.transform);
+          var chargedObject = gameObject.GetComponent<ChargedObject>();
+          chargedObject.Data = data;
+        }
+      };
+    }
   }
 
   public static class JsonHelper {
-
     public static T[] FromJson<T>(string json) {
-      Wrapper<T> wrapper = UnityEngine.JsonUtility.FromJson<Wrapper<T>>(json);
+      Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
       return wrapper.Items;
     }
 
     public static string ToJson<T>(T[] array) {
       Wrapper<T> wrapper = new Wrapper<T>();
       wrapper.Items = array;
-      return UnityEngine.JsonUtility.ToJson(wrapper);
+      return JsonUtility.ToJson(wrapper);
     }
 
     [Serializable]

@@ -5,11 +5,12 @@ namespace Simulation {
   [RequireComponent(typeof(Rigidbody))]
   public class ChargedObject : MonoBehaviour {
     public ChargedObjectData Data {
-      get { return new ChargedObjectData(charge, startVelocity, Rigidbody.mass); }
+      get { return new ChargedObjectData(transform.position, charge, startVelocity, Rigidbody.mass); }
       set {
         charge = value.Charge;
         startVelocity = value.StartVelocity;
         Rigidbody.mass = value.Mass;
+        transform.position = value.Position;
       }
     }
 

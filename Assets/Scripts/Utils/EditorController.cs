@@ -17,6 +17,7 @@ namespace Utils {
 
 
     private void Awake() {
+      AppManager.Instance.EditorModeEnabled = true;
       chargedObjectToInstantiate = Resources.Load<GameObject>("Prefabs/ChargedObject");
       simulationSystem = FindObjectOfType<SimulationSystem>();
     }
@@ -77,7 +78,7 @@ namespace Utils {
       flyCamScrypt.enabled = true;
 
       CameraObject.clearFlags = CameraClearFlags.Skybox;
-      AppManager.Instance.EditorModeEnabled = false;
+//      AppManager.Instance.EditorModeEnabled = false;
     }
 
     private void ClearTextInInputFields() {
