@@ -29,6 +29,14 @@ namespace Utils {
       if (Input.GetKeyDown(KeyCode.V)) {
         StartAddChargeObject();
       }
+
+      if (Input.GetKeyDown(KeyCode.P)) {
+        Helpers.SaveScene();
+      }
+
+      if (Input.GetKeyDown(KeyCode.O)) {
+        Helpers.LoadScene();
+      }
     }
 
     private void StartAddChargeObject() {

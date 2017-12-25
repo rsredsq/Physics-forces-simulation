@@ -4,6 +4,15 @@ using UnityEngine.Events;
 namespace Simulation {
   [RequireComponent(typeof(Rigidbody))]
   public class ChargedObject : MonoBehaviour {
+    public ChargedObjectData Data {
+      get { return new ChargedObjectData(charge, startVelocity, Rigidbody.mass); }
+      set {
+        charge = value.Charge;
+        startVelocity = value.StartVelocity;
+        Rigidbody.mass = value.Mass;
+      }
+    }
+
     [SerializeField]
     private float charge;
 
