@@ -35,8 +35,11 @@ namespace Simulation {
       physicsObjects.ForEach(cObj => {
         var rig = cObj.GetComponent<Rigidbody>();
         rig.WakeUp();
+        if (rig.velocity == Vector3.zero) {
+          rig.velocity = cObj.startVelocity;
+          cObj.startVelocity = Vector3.zero;
+        }
       });
-
       PopVelocity();
       simulationPaused = false;
     }
