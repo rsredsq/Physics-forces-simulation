@@ -29,7 +29,7 @@ namespace Utils {
         AppManager.Instance.EditorModeEnabled = !AppManager.Instance.EditorModeEnabled;
       }
 
-      if (Input.GetKeyDown(KeyCode.V)) {
+      if (Input.GetKeyDown(KeyCode.V) && EditorMode) {
         StartAddChargeObject();
       }
 
