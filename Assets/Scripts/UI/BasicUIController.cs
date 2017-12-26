@@ -1,10 +1,13 @@
 ﻿using Simulation;
 using UnityEngine;
+using UnityEngine.Networking;
 using Utils;
 
 namespace UI {
   public class BasicUIController : MonoBehaviour {
     private Camera followingCamera;
+
+    public Texture2D crosshairImage;
 
     private void Awake() {
       PickCamera();
@@ -14,9 +17,12 @@ namespace UI {
       followingCamera = GameObject.FindGameObjectWithTag("FollowingCamera").GetComponent<Camera>();
     }
 
+
     private void OnGUI() {
+      GUI.DrawTexture(new Rect(Screen.width / 2 - 16, Screen.height / 2 - 16, 32, 32), crosshairImage);
+
       if (AppManager.Instance.EditorModeEnabled) {
-        GUI.Label(new Rect(0, 0, 200, 50), "[Editor Mode]");
+        GUILayout.Label("[Editor Mode]");
       }
       if (followingCamera.enabled) {
         ShowPhysicsConsts();
@@ -28,13 +34,12 @@ namespace UI {
       if (target == null) return;
       var chargedObject = target.GetComponent<ChargedObject>();
       if (chargedObject == null) return;
-      GUI.BeginGroup(new Rect(0, 20, 200, 100));
-      GUI.Box(new Rect(0, 0, 200, 100), "");
-      GUILayout.Label(string.Format("Заряд: {0} Кл", chargedObject.Charge));
-      GUILayout.Label(string.Format("Скорость: {0} мм/с", chargedObject.Rigidbody.velocity));
-      GUILayout.Label(string.Format("Сила Лоренца: {0} Н", chargedObject.LorentzForce));
-      GUILayout.Label(string.Format("Сила Кулона: {0} Н", chargedObject.CoulombForce));
-      GUI.EndGroup();
+      GUILayout.BeginVertical("", GUI.skin.box);
+      GUILayout.Label(string.Format("Заряд: {0:0.00} Кл", chargedObject.Charge));
+      GUILayout.Label(string.Format("Скорость: {0} мм/с", chargedObject.Rigidbody.velocity.ToString("0.00")));
+      GUILayout.Label(string.Format("Сила Лоренца: {0} Н", chargedObject.LorentzForce.ToString("0.00")));
+      GUILayout.Label(string.Format("Сила Кулона: {0} Н", chargedObject.CoulombForce.ToString("0.00")));
+      GUILayout.EndVertical();
     }
   }
 }
