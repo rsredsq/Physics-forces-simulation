@@ -17,9 +17,10 @@ namespace UI {
       followingCamera = GameObject.FindGameObjectWithTag("FollowingCamera").GetComponent<Camera>();
     }
 
-
     private void OnGUI() {
-      GUI.DrawTexture(new Rect(Screen.width / 2 - 16, Screen.height / 2 - 16, 32, 32), crosshairImage);
+      if (Cursor.lockState != CursorLockMode.None) {
+        GUI.DrawTexture(new Rect(Screen.width / 2 - 16, Screen.height / 2 - 16, 32, 32), crosshairImage);
+      }
 
       if (AppManager.Instance.EditorModeEnabled) {
         GUILayout.Label("[Editor Mode]");
