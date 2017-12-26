@@ -32,6 +32,7 @@ namespace Simulation {
 
     private void ResumeSimulation() {
       if (!simulationPaused) return;
+      PopVelocity();
       physicsObjects.ForEach(cObj => {
         var rig = cObj.GetComponent<Rigidbody>();
         rig.WakeUp();
@@ -40,7 +41,6 @@ namespace Simulation {
           cObj.startVelocity = Vector3.zero;
         }
       });
-      PopVelocity();
       simulationPaused = false;
     }
 

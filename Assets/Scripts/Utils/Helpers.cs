@@ -10,6 +10,8 @@ using Object = UnityEngine.Object;
 
 namespace Utils {
   public static class Helpers {
+    public static ChargedObjectData[] GlobalData;
+
     public static float GetValidCharge(float charge) {
       return charge * 1e-6f;
     }
@@ -36,7 +38,7 @@ namespace Utils {
     }
 
     public static void SaveScene() {
-      var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", "", "dat");
+      var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", "", "json");
 
       var objectsToSave = GameObject.FindObjectsOfType<ChargedObject>()
         .Select(it => it.Data).ToArray();
@@ -49,7 +51,7 @@ namespace Utils {
     }
 
     public static ChargedObjectData[] LoadData() {
-      var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", "dat", false);
+      var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", "json", false);
 
       var path = paths[0];
       if (path.StartsWith("file://")) {
@@ -62,19 +64,24 @@ namespace Utils {
       return chargedObjectsData;
     }
 
-    public static void LoadScene() {
-      var datas = LoadData();
-      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    static Helpers() {
       SceneManager.sceneLoaded += (scene, mode) => {
         var simulationSystem = GameObject.FindGameObjectWithTag("SimulationSystem");
         var objToCreate = Resources.Load<GameObject>("Prefabs/ChargedObject");
 
-        foreach (var data in datas) {
-          var gameObject = Object.Instantiate(objToCreate, data.Position, Quaternion.identity, simulationSystem.transform);
+        foreach (var data in GlobalData) {
+          var gameObject =
+            Object.Instantiate(objToCreate, data.Position, Quaternion.identity, simulationSystem.transform);
           var chargedObject = gameObject.GetComponent<ChargedObject>();
           chargedObject.Data = data;
         }
       };
+    }
+
+    public static void LoadScene() {
+      var datas = LoadData();
+      GlobalData = datas;
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
   }
 
@@ -87,7 +94,7 @@ namespace Utils {
     public static string ToJson<T>(T[] array) {
       Wrapper<T> wrapper = new Wrapper<T>();
       wrapper.Items = array;
-      return JsonUtility.ToJson(wrapper);
+      return JsonUtility.ToJson(wrapper, true);
     }
 
     [Serializable]
