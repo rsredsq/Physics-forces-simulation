@@ -1,10 +1,12 @@
 ﻿using Simulation;
+using UI;
 using UnityEngine;
 
 namespace Utils {
   public class CameraSwitchController : MonoBehaviour {
     private Camera mainCamera;
     private Camera followingCamera;
+    public EditorController Controller;
 
     private void Awake() {
       PickCameras();
@@ -22,7 +24,7 @@ namespace Utils {
         if (!Physics.Raycast(mainCamera.transform.position, forward, out raycastHit)) return;
         var hitObject = raycastHit.transform.gameObject;
         var chargedObject = hitObject.GetComponent<ChargedObject>();
-        if (chargedObject == null || !Input.GetKeyDown(KeyCode.Space)) return;
+        if (chargedObject == null || !Input.GetKeyDown(KeyCode.Space) || Controller.EditorMode) return;
         EnableSecondaryCamera();
         followingCamera.GetComponent<FollowCam>().Target = chargedObject.transform;
       } else if (followingCamera.enabled) {

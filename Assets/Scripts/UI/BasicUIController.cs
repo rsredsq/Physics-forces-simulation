@@ -30,8 +30,8 @@ namespace UI {
       if (chargedObject == null) return;
       GUI.BeginGroup(new Rect(0, 20, 200, 100));
       GUI.Box(new Rect(0, 0, 200, 100), "");
-      GUILayout.Label(string.Format("Заряд: {0} u", chargedObject.Charge));
-      GUILayout.Label(string.Format("Скорость: {0} u/ч", chargedObject.Rigidbody.velocity));
+      GUILayout.Label(string.Format("Заряд: {0} Кл", chargedObject.Charge));
+      GUILayout.Label(string.Format("Скорость: {0} мм/с", chargedObject.Rigidbody.velocity));
       GUILayout.Label(string.Format("Сила Лоренца: {0} Н", chargedObject.LorentzForce));
       GUILayout.Label(string.Format("Сила Кулона: {0} Н", chargedObject.CoulombForce));
       GUI.EndGroup();
