@@ -124,6 +124,13 @@ namespace Utils {
       ClearTextInInputFields();
     }
 
+    public void ClickButtonCancle() {
+      FinishAddChargeObject();
+      LockedCursor();
+
+      ClearTextInInputFields();
+    }
+
     private void InstantiateNewObject(float weight, Vector3 speed, Vector3 pos, float charge) {
       var obj = Instantiate(chargedObjectToInstantiate, simulationSystem.transform);
       var chargedObj = obj.GetComponent<ChargedObject>();
