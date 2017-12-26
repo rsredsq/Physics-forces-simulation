@@ -47,6 +47,7 @@ namespace Utils {
       }
 
       if (Input.GetKeyDown(KeyCode.Escape)) {
+        UnlockedCursor();
         LoadScenesOnClick.LoadByIndex(0);
       }
     }
@@ -74,6 +75,10 @@ namespace Utils {
 
     private static void UnlockedCursor() {
       Cursor.lockState = CursorLockMode.None;
+    }
+
+    private static void LockedCursor() {
+      Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void LockedFlyCam() {
@@ -110,6 +115,7 @@ namespace Utils {
 
       var charge = Helpers.GetValidCharge(Helpers.ParseFloat(Charge));
 
+      LockedCursor();
       FinishAddChargeObject();
       InstantiateNewObject(weight, speed, position, charge);
 
