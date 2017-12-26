@@ -10,6 +10,8 @@ namespace Utils {
     public Camera CameraObject;
     public Canvas CanvasObject;
 
+    public Camera FollowingCamera;
+
     public TMP_InputField Weight;
     public TMP_InputField Speed;
     public TMP_InputField Position;
@@ -29,7 +31,7 @@ namespace Utils {
         AppManager.Instance.EditorModeEnabled = !AppManager.Instance.EditorModeEnabled;
       }
 
-      if (Input.GetKeyDown(KeyCode.V) && EditorMode) {
+      if (Input.GetKeyDown(KeyCode.V) && EditorMode && !FollowingCamera.enabled) {
         StartAddChargeObject();
       }
 
