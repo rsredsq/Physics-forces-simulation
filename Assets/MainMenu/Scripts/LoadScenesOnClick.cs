@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class LoadScenesOnClick : MonoBehaviour {
 
-  public void LoadByIndex(int sceneIndex) {
+  public static void LoadByIndex(int sceneIndex) {
     SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
   }
 
+  public void LoadByIndexObj(int sceneIndex) {
+    LoadByIndex(sceneIndex);
+  }
 }

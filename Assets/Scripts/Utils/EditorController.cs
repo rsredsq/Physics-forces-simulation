@@ -34,12 +34,21 @@ namespace Utils {
         StartAddChargeObject();
       }
 
-      if (Input.GetKeyDown(KeyCode.P)) {
+      if (Input.GetKeyDown(KeyCode.P) && EditorMode) {
         Helpers.SaveScene();
       }
 
       if (Input.GetKeyDown(KeyCode.O)) {
         Helpers.LoadScene();
+      }
+
+      if (Input.GetKeyDown(KeyCode.C)) {
+        EditorMode = !EditorMode;
+        AppManager.Instance.EditorModeEnabled = EditorMode;
+      }
+
+      if (Input.GetKeyDown(KeyCode.Escape)) {
+        LoadScenesOnClick.LoadByIndex(0);
       }
     }
 

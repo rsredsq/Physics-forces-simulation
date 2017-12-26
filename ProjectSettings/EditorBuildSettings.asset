@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MainMenu/Scenes/MainMenu.unity
-    guid: ec9b68e6365f24f41907138487e93720
+    path: Assets/MainMenu/Scenes/new.unity
+    guid: 8556f8aa4b776c141a3f3ee184b7d3ba
   - enabled: 1
-    path: Assets/Scenes/FollowCamScene.unity
-    guid: b451ac3fdf4e713438b9a75a0fc6def0
+    path: Assets/Scenes/NewChargeDialogScene.unity
+    guid: c3e166a844e8641a589b22926a38bc14
