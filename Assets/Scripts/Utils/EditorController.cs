@@ -15,18 +15,14 @@ namespace Utils {
     public TMP_InputField Position;
     public TMP_InputField Charge;
 
-    [SerializeField]
-    public bool EditorMode;
-
-
     private void Awake() {
-      AppManager.Instance.EditorModeEnabled = EditorMode;
+      AppManager.Instance.EditorModeEnabled = true;
       chargedObjectToInstantiate = Resources.Load<GameObject>("Prefabs/ChargedObject");
       simulationSystem = FindObjectOfType<SimulationSystem>();
     }
 
     private void Update() {
-      if (Input.GetKeyDown(KeyCode.Y) && !EditorMode) {
+      if (Input.GetKeyDown(KeyCode.Y)) {
         AppManager.Instance.EditorModeEnabled = !AppManager.Instance.EditorModeEnabled;
       }
 
@@ -90,9 +86,7 @@ namespace Utils {
       flyCamScrypt.enabled = true;
 
       CameraObject.clearFlags = CameraClearFlags.Skybox;
-      if (!EditorMode) {
-        AppManager.Instance.EditorModeEnabled = false;
-      }
+//        AppManager.Instance.EditorModeEnabled = false;
     }
 
     private void ClearTextInInputFields() {

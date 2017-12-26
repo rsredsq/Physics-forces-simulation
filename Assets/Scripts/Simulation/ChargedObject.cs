@@ -52,7 +52,6 @@ namespace Simulation {
 
     private void Start() {
       OnChargeChange.Invoke();
-      Rigidbody.velocity = startVelocity;
     }
 
     private void OnCollisionEnter(Collision other) {
