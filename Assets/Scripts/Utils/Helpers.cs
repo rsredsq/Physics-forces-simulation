@@ -66,6 +66,7 @@ namespace Utils {
 
     static Helpers() {
       SceneManager.sceneLoaded += (scene, mode) => {
+        if (GlobalData == null) return;
         var simulationSystem = GameObject.FindGameObjectWithTag("SimulationSystem");
         var objToCreate = Resources.Load<GameObject>("Prefabs/ChargedObject");
 
