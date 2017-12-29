@@ -49,7 +49,7 @@ namespace Utils {
       }
 
       if (Input.GetKeyDown(KeyCode.Escape)) {
-        UnlockedCursor();
+        LockedCursor();
         LoadScenesOnClick.LoadByIndex(0);
       }
     }
