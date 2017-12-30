@@ -3294,7 +3294,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\u043C\u043C/\u0441"
+  m_text: "\u0441\u043C/\u0441"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 957f32ec6dc7d3547a2bcda02aa52c6f, type: 2}
   m_sharedMaterial: {fileID: 21404562270815994, guid: 957f32ec6dc7d3547a2bcda02aa52c6f,
@@ -4062,7 +4062,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\u043C\u043C"
+  m_text: "\u0441\u043C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 957f32ec6dc7d3547a2bcda02aa52c6f, type: 2}
   m_sharedMaterial: {fileID: 21404562270815994, guid: 957f32ec6dc7d3547a2bcda02aa52c6f,
